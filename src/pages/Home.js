@@ -213,6 +213,7 @@ function Home() {
       <Header />
       <Portfolio />
       <SectionHeading>
+    
         <HeadingText>Book Your Session Today and Transform Your Life!</HeadingText>
         {userDetails?.role === 'admin' && (
           <>

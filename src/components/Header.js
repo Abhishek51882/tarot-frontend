@@ -55,6 +55,7 @@ const ContactDetails = styled.div`
 export default function Header() {
     return (
         <HeaderWrapper>
+            <Title>DIVINE SSPIRIT TAROT</Title>
             <Title>Sheenam Goel- Tarot Reader, Numerologist, Astrologer ,Bach Flower Therapist & Spiritual Healer</Title>
             <Subtitle>Discover your destiny, heal your soul</Subtitle>
             <StyledImage 
