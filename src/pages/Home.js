@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import ServiceCard from '../components/ServiceCard';
 import Portfolio from '../components/Portfolio';
 import api from '../services/api';
+import Footer from '../components/Footer';
 
 const ServicesContainer = styled.div`
   display: grid;
@@ -294,6 +295,7 @@ function Home() {
           </Modal>
         </>
       )}
+      <Footer/>
     </>
   );
 }

@@ -8,6 +8,7 @@ function ServiceCard({ service, userRole, updateServices }) {
   const [isBookModalOpen, setIsBookModalOpen] = useState(false);
   const [isPaymentDone, setIsPaymentDone] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  console.log("isPaymentDone", isPaymentDone)
 
   const [formData, setFormData] = useState({
     title: service.title,
@@ -116,13 +117,16 @@ function ServiceCard({ service, userRole, updateServices }) {
     }
   };
 
-  const handlePayment = async () => {
+  const handlePayment = async (e) => {
+    e.preventDefault();
+    console.log("entering handle payment")
     if (!bookingData.name || !bookingData.email || !bookingData.phone || !bookingData.dob) {
       alert('Please fill in all required fields');
       return;
     }
 
     setIsLoading(true);
+    console.log("entering handle payment2")
     try {
       const response = await api.post('/bookings', {
         ...bookingData,
@@ -130,6 +134,7 @@ function ServiceCard({ service, userRole, updateServices }) {
         serviceName: service.title,
         amount: paymentDetails.amount,
       });
+      console.log('Booking response:', response);
 
       if (response.status === 201) {
         setIsPaymentDone(true);
@@ -351,7 +356,13 @@ function ServiceCard({ service, userRole, updateServices }) {
                       onChange={handleBookingInputChange}
                     />
                   </div>
-                  <button className="modal-button" onClick={handlePayment}>
+                  <button
+                    className="modal-button"
+                    onClick={(e) => {
+                      console.log("Proceed to Payment button clicked");
+                      handlePayment(e);
+                    }}
+                  >
                     Proceed to Payment
                   </button>
                 </form>
